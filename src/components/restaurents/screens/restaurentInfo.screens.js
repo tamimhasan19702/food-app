@@ -25,7 +25,7 @@ export const RestaurentInfoScreen = () => {
 const SafeView = styled(SafeAreaView)`
   display: flex;
   flex: 1;
-  margin-top: ${StatusBar.currentHeight || 0};
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
 const SearchView = styled(View)`
