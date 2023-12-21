@@ -29,11 +29,11 @@ const SafeView = styled(SafeAreaView)`
 `;
 
 const SearchView = styled(View)`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurentView = styled(View)`
   display: flex;
   flex: 1;
-  padding: 0px 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;

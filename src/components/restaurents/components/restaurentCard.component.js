@@ -35,15 +35,15 @@ const RestaurentCard = ({ restaurent = {} }) => {
 export default RestaurentCard;
 
 const Title = Styled.Text`
-margin-top: 16px;
-color: black;
+margin-top: ${(props) => props.theme.space[3]};
+color: ${(props) => props.theme.colors.ui.secondary};
 `;
 
 const ResCover = Styled(Card.Cover)`
-padding: 16px;
-background-color: white
+padding:${(props) => props.theme.space[3]};
+background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const ResCard = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
