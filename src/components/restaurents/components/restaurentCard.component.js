@@ -3,6 +3,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { Button, Card, Text as paperText } from "react-native-paper";
+import Styled, { styled } from "styled-components/native";
 
 const RestaurentCard = ({ restaurent = {} }) => {
   const {
@@ -17,29 +18,32 @@ const RestaurentCard = ({ restaurent = {} }) => {
     isClosedTemporarily,
   } = restaurent;
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Cover
+    <ResCard elevation={5}>
+      <ResCover
         key={name}
         source={{
           uri: photos[0],
         }}
-        style={styles.cover}
       />
       <Card.Content>
-        <Text variant="titleLarge">{name}</Text>
+        <Title variant="titleLarge">{name}</Title>
       </Card.Content>
-    </Card>
+    </ResCard>
   );
 };
 
 export default RestaurentCard;
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "white",
-  },
-  cover: {
-    padding: 20,
-    backgroundColor: "white",
-  },
-});
+const Title = Styled.Text`
+margin-top: 16px;
+color: black;
+`;
+
+const ResCover = Styled(Card.Cover)`
+padding: 16px;
+background-color: white
+`;
+
+const ResCard = styled(Card)`
+  background-color: white;
+`;
