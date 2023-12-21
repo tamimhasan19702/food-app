@@ -1,14 +1,16 @@
 /** @format */
 
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { Button, Card, Text as paperText } from "react-native-paper";
 
-const RestaurentInfo = ({ restaurent = {} }) => {
+const RestaurentCard = ({ restaurent = {} }) => {
   const {
     name = "Mayer doya restaurent",
     icon,
-    photos = [],
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg",
+    ],
     address = "Professor-para chandpur",
     isOpenNow,
     rating,
@@ -30,7 +32,7 @@ const RestaurentInfo = ({ restaurent = {} }) => {
   );
 };
 
-export default RestaurentInfo;
+export default RestaurentCard;
 
 const styles = StyleSheet.create({
   card: {

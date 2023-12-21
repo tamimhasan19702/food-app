@@ -3,7 +3,7 @@
 import React from "react";
 import { View, Text, SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
-import RestaurentInfo from "../components/restaurent-info.component";
+import RestaurentCard from "../components/restaurentCard.component";
 
 export const RestaurentInfoScreen = () => {
   return (
@@ -14,7 +14,7 @@ export const RestaurentInfoScreen = () => {
         </View>
 
         <View style={{ flex: 1, backgroundColor: "green", padding: 16 }}>
-          <RestaurentInfo />
+          <RestaurentCard />
         </View>
       </SafeAreaView>
     </>
