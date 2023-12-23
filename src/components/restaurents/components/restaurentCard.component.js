@@ -12,6 +12,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import Open from "../../../../assets/open";
+import { Spacer } from "../../spacer/spacer";
 
 const Title = Styled(Text)`
 font-size: ${(props) => props.theme.fontSizes.body};
@@ -105,12 +106,14 @@ const RestaurentCard = ({ restaurent = {} }) => {
                 CLOSED TEMPORARILY
               </Text>
             )}
-            <View style={{ paddingLeft: 16 }} />
-            {isOpenNow && (
-              <SvgXml xml={Open} width={20} height={20} fill={"#f00"} />
-            )}
-            <View style={{ paddingLeft: 16 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Spacer position={"left"} size={"large"}>
+              {isOpenNow && (
+                <SvgXml xml={Open} width={20} height={20} fill={"#f00"} />
+              )}
+            </Spacer>
+            <Spacer position={"left"} size={"large"}>
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Spacer>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
