@@ -1,9 +1,6 @@
 /** @format */
 
-import { View, Text, Image } from "react-native";
 import React from "react";
-import { Card } from "react-native-paper";
-import Styled, { styled } from "styled-components/native";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -13,49 +10,17 @@ import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import Open from "../../../../assets/open";
 import { Spacer } from "../../spacer/spacer";
-
-const Title = Styled(Text)`
-font-size: ${(props) => props.theme.fontSizes.body};
-font-family: ${(props) => props.theme.fonts.heading};
-color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const ResCover = Styled(Card.Cover)`
-padding:  ${(props) => props.theme.space[3]};
-background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const ResCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Info = styled(View)`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const Rating = styled(View)`
-  display: flex;
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const Address = styled(Text)`
-  font-size: ${(props) => props.theme.fontSizes.caption};
-  font-family: ${(props) => props.theme.fonts.body};
-`;
-
-const Section = styled(View)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const SectionEnd = styled(View)`
-  flex: 1;
-  justify-content: flex-end;
-  flex-direction: row;
-`;
+import { Text } from "../../typography/text.component";
+import {
+  ResCard,
+  ResCover,
+  Info,
+  Rating,
+  Address,
+  Section,
+  SectionEnd,
+  Icon,
+} from "./restaurentCard.styles";
 
 const RestaurentCard = ({ restaurent = {} }) => {
   const [oswaldLoaded] = useOswald({
@@ -93,7 +58,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
         }}
       />
       <Info>
-        <Title>{name}</Title>
+        <Text varient="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map((index) => (
@@ -102,9 +67,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text style={{ color: "#f00", fontSize: 16 }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text varient="error">CLOSED TEMPORARILY</Text>
             )}
             <Spacer position={"left"} size={"large"}>
               {isOpenNow && (
@@ -112,7 +75,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
               )}
             </Spacer>
             <Spacer position={"left"} size={"large"}>
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon style={{ width: 15, height: 15 }} source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
