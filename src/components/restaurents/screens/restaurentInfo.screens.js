@@ -6,11 +6,7 @@ import { Searchbar } from "react-native-paper";
 import RestaurentCard from "../components/restaurentCard.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../spacer/spacer";
-
-const SafeView = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
+import { SafeView } from "../../safeArea.component";
 
 const SearchView = styled(View)`
   padding: ${(props) => props.theme.space[3]};
