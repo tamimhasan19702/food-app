@@ -67,7 +67,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text varient="error">CLOSED TEMPORARILY</Text>
+              <Text varient={"error"}>CLOSED TEMPORARILY</Text>
             )}
             <Spacer position={"left"} size={"large"}>
               {isOpenNow && (

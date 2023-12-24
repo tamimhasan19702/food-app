@@ -38,7 +38,7 @@ export const RestaurentInfoScreen = () => {
               </Spacer>
             </>
           )}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => Math.random()}
           contentContainerStyle={{ padding: 16 }}
         />
       </SafeView>
