@@ -40,6 +40,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg",
+      "https://myfitnessnotion.files.wordpress.com/2021/06/balanced-diet.jpg",
     ],
     address = "Professor-para chandpur",
     isOpenNow = "True",
@@ -54,7 +55,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
       <ResCover
         key={name}
         source={{
-          uri: photos[0],
+          uri: photos[1],
         }}
       />
       <Info>
