@@ -1,9 +1,6 @@
 /** @format */
 
-import { View, Text, Image } from "react-native";
 import React from "react";
-import { Card } from "react-native-paper";
-import Styled, { styled } from "styled-components/native";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -12,51 +9,32 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import Open from "../../../../assets/open";
-
-const Title = Styled(Text)`
-font-size: ${(props) => props.theme.fontSizes.body};
-font-family: ${(props) => props.theme.fonts.heading};
-color: ${(props) => props.theme.colors.ui.primary};
-`;
-
-const ResCover = Styled(Card.Cover)`
-padding:  ${(props) => props.theme.space[3]};
-background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const ResCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const Info = styled(View)`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const Rating = styled(View)`
-  display: flex;
-  flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const Address = styled(Text)`
-  font-size: ${(props) => props.theme.fontSizes.caption};
-  font-family: ${(props) => props.theme.fonts.body};
-`;
-
-const Section = styled(View)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const SectionEnd = styled(View)`
-  flex: 1;
-  justify-content: flex-end;
-  flex-direction: row;
-`;
+import { Spacer } from "../../spacer/spacer";
+import { Text } from "../../typography/text.component";
+import {
+  ResCard,
+  ResCover,
+  Info,
+  Rating,
+  Address,
+  Section,
+  SectionEnd,
+  Icon,
+} from "./restaurentCard.styles";
 
 const RestaurentCard = ({ restaurent = {} }) => {
+  const {
+    name = "Some Restaurant",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address = "100 some random street",
+    isOpenNow = true,
+    rating = 4,
+    isClosedTemporarily = true,
+  } = restaurent;
+
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -69,18 +47,6 @@ const RestaurentCard = ({ restaurent = {} }) => {
     return null;
   }
 
-  const {
-    name = "Mayer doya restaurent",
-    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    photos = [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg",
-    ],
-    address = "Professor-para chandpur",
-    isOpenNow = "True",
-    rating = 3,
-    isClosedTemporarily = "True",
-  } = restaurent;
-
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
@@ -92,7 +58,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
         }}
       />
       <Info>
-        <Title>{name}</Title>
+        <Text varient="label">{name}</Text>
         <Section>
           <Rating>
             {ratingArray.map((index) => (
@@ -101,16 +67,16 @@ const RestaurentCard = ({ restaurent = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <Text style={{ color: "#f00", fontSize: 16 }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
-            <View style={{ paddingLeft: 16 }} />
-            {isOpenNow && (
-              <SvgXml xml={Open} width={20} height={20} fill={"#f00"} />
-            )}
-            <View style={{ paddingLeft: 16 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Spacer position={"left"} size={"large"}>
+              {isOpenNow && (
+                <SvgXml xml={Open} width={20} height={20} fill={"#f00"} />
+              )}
+            </Spacer>
+            <Spacer position={"left"} size={"large"}>
+              <Icon style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Spacer>
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
