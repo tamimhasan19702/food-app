@@ -23,6 +23,18 @@ import {
 } from "./restaurentCard.styles";
 
 const RestaurentCard = ({ restaurent = {} }) => {
+  const {
+    name = "Some Restaurant",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address = "100 some random street",
+    isOpenNow = true,
+    rating = 4,
+    isClosedTemporarily = true,
+  } = restaurent;
+
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -35,19 +47,6 @@ const RestaurentCard = ({ restaurent = {} }) => {
     return null;
   }
 
-  const {
-    name = "Mayer doya restaurent",
-    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    photos = [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg",
-      "https://myfitnessnotion.files.wordpress.com/2021/06/balanced-diet.jpg",
-    ],
-    address = "Professor-para chandpur",
-    isOpenNow = "True",
-    rating = 3,
-    isClosedTemporarily = "True",
-  } = restaurent;
-
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
@@ -55,7 +54,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
       <ResCover
         key={name}
         source={{
-          uri: photos[1],
+          uri: photos[0],
         }}
       />
       <Info>

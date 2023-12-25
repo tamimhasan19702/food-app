@@ -2,17 +2,42 @@
 
 import React, { createContext, useState, useEffect, useMemo } from "react";
 import {
-  restaurantsRequest,
-  restaurantsTransform,
+  RestaurentRequests,
+  RestaurentTransforms,
 } from "./restaurents.services";
 
 export const restaurantsContext = createContext();
 
 export const RestaurantsProvider = ({ children }) => {
+  const [restaurents, setRestaurents] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const retriveRestaurents = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      RestaurentRequests()
+        .then(RestaurentTransforms)
+        .then((results) => {
+          setIsLoading(false);
+          setRestaurents(results);
+        })
+        .catch(() => {
+          setIsLoading(false);
+          setIsError(true);
+        });
+    }, 2000);
+  };
+
+  useEffect(() => {
+    retriveRestaurents();
+  }, []);
   return (
     <restaurantsContext.Provider
       value={{
-        restaurents: [1, 2, 3, 4, 5, 6, 7, 8],
+        restaurents,
+        isLoading,
+        isError,
       }}>
       {children}
     </restaurantsContext.Provider>

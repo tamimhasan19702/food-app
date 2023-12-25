@@ -17,14 +17,14 @@ const SearchView = styled(View)`
 export const RestaurentInfoScreen = () => {
   const renderItem = ({ item }) => (
     <>
-      <Spacer position="bottom" size="large" key={item.name}>
-        <RestaurentCard />
+      <Spacer position="bottom" size="large">
+        <RestaurentCard restaurent={item} key={item.name} />
       </Spacer>
     </>
   );
 
-  const restaurentContext = useContext(restaurantsContext);
-  console.log(restaurentContext);
+  const { restaurents, isLoading, isError } = useContext(restaurantsContext);
+
   return (
     <>
       <SafeView>
@@ -32,7 +32,7 @@ export const RestaurentInfoScreen = () => {
           <Searchbar />
         </SearchView>
         <FlatList
-          data={restaurentContext.restaurents}
+          data={restaurents}
           renderItem={renderItem}
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ padding: 16 }}
