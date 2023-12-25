@@ -7,7 +7,8 @@ import { RestaurentInfoScreen } from "./src/components/restaurents/screens/resta
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Foundation, Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { restaurentRequests } from "./src/services/restaurents/restaurents.services";
 
 function SettingsScreen() {
   return (
@@ -19,18 +20,41 @@ function SettingsScreen() {
 
 const Tab = createBottomTabNavigator();
 
+const TabIcon = {
+  Restaurents: "md-restaurant-sharp",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+const screenOptions = ({ route }) => ({
+  tabBarIcon: ({ color }) => {
+    let iconName;
+
+    if (route.name === "Restaurents") {
+      iconName = "restaurents";
+    } else if (route.name === "Settings") {
+      iconName = "settings";
+    } else if (route.name === "Map") {
+      iconName = "map-marked-alt";
+    }
+
+    return <FontAwesome5 name={iconName} size={24} color={color} />;
+  },
+  tabBarActiveTintColor: activeTabBarIconColor,
+  tabBarInactiveTintColor: tabBarIconColor,
+});
 function MyTabs() {
   const tabBarIconColor = theme.colors.ui.primary;
   const activeTabBarIconColor = theme.colors.ui.error;
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Restaurents"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           let iconName;
 
-          if (route.name === "Home") {
-            iconName = "home";
+          if (route.name === "Restaurents") {
+            iconName = "restaurents";
           } else if (route.name === "Settings") {
             iconName = "settings";
           } else if (route.name === "Map") {
@@ -43,24 +67,13 @@ function MyTabs() {
         tabBarInactiveTintColor: tabBarIconColor,
       })}>
       <Tab.Screen
-        name="Home"
+        name="Restaurents"
         component={RestaurentInfoScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "Home",
+          tabBarLabel: "Restaurents",
           tabBarIcon: ({ color }) => (
-            <Foundation name="home" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          headerShown: false,
-          tabBarLabel: "Settings",
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="settings" size={24} color={color} />
+            <Ionicons name="md-restaurant-sharp" size={24} color={color} />
           ),
         }}
       />
@@ -72,6 +85,17 @@ function MyTabs() {
           tabBarLabel: "Map",
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="map-marked-alt" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Settings",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="settings" size={24} color={color} />
           ),
         }}
       />
