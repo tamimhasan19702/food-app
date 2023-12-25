@@ -1,12 +1,13 @@
 /** @format */
 
-import React from "react";
+import React, { useContext } from "react";
 import { View, SafeAreaView, StatusBar, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import RestaurentCard from "../components/restaurentCard.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../spacer/spacer";
 import { SafeView } from "../../safeArea.component";
+import { restaurantsContext } from "../../../services/restaurents/restaurents.context";
 
 const SearchView = styled(View)`
   padding: ${(props) => props.theme.space[3]};
@@ -14,13 +15,6 @@ const SearchView = styled(View)`
 `;
 
 export const RestaurentInfoScreen = () => {
-  const data = [
-    { name: 1 },
-    { name: 2 },
-    { name: 3 },
-    { name: 4 },
-    { name: 5 },
-  ];
   const renderItem = ({ item }) => (
     <>
       <Spacer position="bottom" size="large" key={item.name}>
@@ -28,6 +22,9 @@ export const RestaurentInfoScreen = () => {
       </Spacer>
     </>
   );
+
+  const restaurentContext = useContext(restaurantsContext);
+  console.log(restaurentContext);
   return (
     <>
       <SafeView>
@@ -35,7 +32,7 @@ export const RestaurentInfoScreen = () => {
           <Searchbar />
         </SearchView>
         <FlatList
-          data={data}
+          data={restaurentContext.restaurents}
           renderItem={renderItem}
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ padding: 16 }}

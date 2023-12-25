@@ -13,15 +13,13 @@ export const restaurentRequests = (location = "37.7749295,-122.4194155") => {
   });
 };
 
-const restaurentTransforms = (result) => {
-  return camelize(result);
-};
-
-restaurentRequests()
-  .then(restaurentTransforms)
-  .then((transformedResponse) => {
-    console.log(transformedResponse);
-  })
-  .catch((err) => {
-    console.log(err);
+export const restaurentTransforms = ({ results = [] }) => {
+  const mappedResults = results.map((restaurent) => {
+    return {
+      ...restaurent,
+      isOpenNow: restaurent.opening_hours && restaurent.opening_hours.open_now,
+      isClosedTemporarily: restaurent.business_status === "CLOSED_TEMPORARILY",
+    };
   });
+  return camelize(mappedResults);
+};
