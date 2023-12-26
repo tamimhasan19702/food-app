@@ -18,8 +18,6 @@ export const RestaurentTransforms = ({ results = [] }) => {
     restaurent.photos = restaurent.photos.map((p) => {
       return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
     });
-    console.log(restaurent.photos);
-
     return {
       ...restaurent,
       isOpenNow: restaurent.opening_hours && restaurent.opening_hours.open_now,

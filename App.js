@@ -9,6 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { RestaurantsProvider } from "./src/services/restaurents/restaurents.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 function SettingsScreen() {
   return (
@@ -106,11 +107,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsProvider>
-          <NavigationContainer>
-            <MyTabs />
-          </NavigationContainer>
-        </RestaurantsProvider>
+        <LocationContextProvider>
+          <RestaurantsProvider>
+            <NavigationContainer>
+              <MyTabs />
+            </NavigationContainer>
+          </RestaurantsProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

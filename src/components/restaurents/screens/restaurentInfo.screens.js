@@ -29,7 +29,7 @@ export const RestaurentInfoScreen = () => {
   const renderItem = ({ item }) => (
     <>
       <Spacer position="bottom" size="large">
-        <RestaurentCard restaurent={item} key={item.name} />
+        <RestaurentCard restaurent={item} />
       </Spacer>
     </>
   );
@@ -49,7 +49,7 @@ export const RestaurentInfoScreen = () => {
         <FlatList
           data={restaurents}
           renderItem={renderItem}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item, index) => item.key}
           contentContainerStyle={{ padding: 16 }}
         />
       </SafeView>
