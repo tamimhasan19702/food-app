@@ -33,6 +33,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restaurent;
 
   const [oswaldLoaded] = useOswald({
@@ -61,8 +62,13 @@ const RestaurentCard = ({ restaurent = {} }) => {
         <Text varient="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map((index) => (
-              <SvgXml xml={star} width={20} height={20} key={index} />
+            {ratingArray.map((_, i) => (
+              <SvgXml
+                key={`start-${placeId}-${i}`}
+                xml={star}
+                width={20}
+                height={20}
+              />
             ))}
           </Rating>
           <SectionEnd>

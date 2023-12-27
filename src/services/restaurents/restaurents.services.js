@@ -20,6 +20,7 @@ export const RestaurentTransforms = ({ results = [] }) => {
     });
     return {
       ...restaurent,
+      address: restaurent.vicinity,
       isOpenNow: restaurent.opening_hours && restaurent.opening_hours.open_now,
       isClosedTemporarily: restaurent.business_status === "CLOSED_TEMPORARILY",
     };
