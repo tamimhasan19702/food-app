@@ -1,22 +1,23 @@
 /** @format */
 
 import camelize from "camelize";
+
 import { locations } from "./location.mock";
 
-export const locationRequest = (searchTerm) => {
+export const LocationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
-    const location = locations[searchTerm];
-    if (!location) {
-      reject("Location not found");
+    const locationMock = locations[searchTerm];
+    if (!locationMock) {
+      reject(new Error("not found"));
     }
-    resolve(location);
+    resolve(locationMock);
   });
 };
 
-export const locationTransform = (result) => {
-  const formattedResults = camelize(result);
-  const { geometry = {} } = formattedResults.results[0];
-  const { lat, lang } = geometry.location;
+export const LocationTransform = (result) => {
+  const formattedResponse = camelize(result);
+  const { geometry = {} } = formattedResponse.results[0] || {};
+  const { lat, lng } = geometry.location || {};
 
-  return { lat, lang };
+  return { lat, lng };
 };

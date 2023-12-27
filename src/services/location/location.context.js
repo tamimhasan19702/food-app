@@ -1,9 +1,9 @@
 /** @format */
 
 import React, { useState, createContext, useEffect } from "react";
-import { locationRequest, locationTransform } from "./location.service";
+import { LocationRequest, LocationTransform } from "./location.service";
 
-export const locationContext = createContext();
+export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,27 +11,30 @@ export const LocationContextProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
   const [keyword, setKeyword] = useState("san francisco");
 
-  const onSearch = (searchkeyword) => {
-    setKeyword(searchkeyword);
+  const onSearch = (searchKeyword) => {
     setIsLoading(true);
-    if (!searchkeyword.length) {
+    setKeyword(searchKeyword);
+
+    if (!searchKeyword.length) {
       return;
     }
-    locationRequest(searchkeyword.toLowerCase())
-      .then(locationTransform)
+
+    LocationRequest(searchKeyword.toLowerCase())
+      .then(LocationTransform)
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
         console.log(result);
       })
-      .catch((error) => {
+      .catch((err) => {
         setIsLoading(false);
-        setIsError(true);
+        setIsError(err);
+        console.log(err);
       });
   };
 
   return (
-    <locationContext.Provider
+    <LocationContext.Provider
       value={{
         isLoading,
         isError,
@@ -40,6 +43,6 @@ export const LocationContextProvider = ({ children }) => {
         search: onSearch,
       }}>
       {children}
-    </locationContext.Provider>
+    </LocationContext.Provider>
   );
 };
