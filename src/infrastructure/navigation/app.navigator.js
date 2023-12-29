@@ -2,12 +2,11 @@
 
 import { View, Text } from "react-native";
 import React from "react";
-import { RestaurentInfoScreen } from "../../components/restaurents/screens/restaurentInfo.screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { theme } from "../theme";
-
+import { RestaurentNavigator } from "./restaurent.navigator";
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -43,7 +42,7 @@ function MyTabs() {
       })}>
       <Tab.Screen
         name="Restaurents"
-        component={RestaurentInfoScreen}
+        component={RestaurentNavigator}
         options={{
           headerShown: false,
           tabBarLabel: "Restaurents",

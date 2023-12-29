@@ -1,8 +1,7 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { View, FlatList } from "react-native";
-
+import { View, FlatList, Pressable } from "react-native";
 import RestaurentCard from "../components/restaurentCard.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../spacer/spacer";
@@ -21,12 +20,22 @@ const LoadingContainer = styled(View)`
   top: 50%;
 `;
 
-export const RestaurentInfoScreen = () => {
+export const RestaurentInfoScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <>
-      <Spacer position="bottom" size="large">
-        <RestaurentCard restaurent={item} />
-      </Spacer>
+      <Pressable
+        onPress={() =>
+          navigation.navigate("RestaurantsDetail", {
+            restaurent: item,
+          })
+        }>
+        <Spacer position="bottom" size="large">
+          <RestaurentCard
+            restaurent={item}
+            style={{ transform: [{ scale: 0.9 }] }}
+          />
+        </Spacer>
+      </Pressable>
     </>
   );
 
