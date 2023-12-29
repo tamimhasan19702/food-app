@@ -7,12 +7,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { theme } from "../theme";
 import { RestaurentNavigator } from "./restaurent.navigator";
+import MapView from "react-native-maps";
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
     </View>
   );
+}
+
+function MapScreen() {
+  return <MapView style={{ flex: 1 }} />;
 }
 
 const Tab = createBottomTabNavigator();
@@ -53,7 +58,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Map"
-        component={SettingsScreen}
+        component={MapScreen}
         options={{
           headerShown: false,
           tabBarLabel: "Map",
