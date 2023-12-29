@@ -25,7 +25,7 @@ export const RestaurentInfoScreen = ({ navigation }) => {
     <>
       <Pressable
         onPress={() =>
-          navigation.navigate("RestaurantsDetail", {
+          navigation.navigate("RestaurentDetail", {
             restaurent: item,
           })
         }>

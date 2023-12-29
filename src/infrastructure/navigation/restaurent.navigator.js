@@ -4,8 +4,8 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 import { RestaurentInfoScreen } from "../../components/restaurents/screens/restaurentInfo.screens";
-import { RestaurentDetails } from "../../components/restaurents/screens/restaurentDetails.screen";
-
+import RestaurentDetails from "../../components/restaurents/screens/restaurentDetails.screen";
+import { Text } from "react-native";
 const RestaurentStack = createStackNavigator();
 
 export const RestaurentNavigator = () => {
@@ -20,7 +20,7 @@ export const RestaurentNavigator = () => {
         }}
       />
       <RestaurentStack.Screen
-        name="RestaurantsDetail"
+        name="RestaurentDetail"
         component={RestaurentDetails}
         options={{
           headerShown: false,
