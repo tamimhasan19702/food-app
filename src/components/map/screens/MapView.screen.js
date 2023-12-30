@@ -29,7 +29,7 @@ export const MapScreen = () => {
           latitude: lat,
           longitude: lng,
           latitudeDelta: latDelta,
-          longitudeDelta: 0.02,
+          longitudeDelta: 0.2,
         }}>
         {restaurents.map((restaurent) => {
           return null;
