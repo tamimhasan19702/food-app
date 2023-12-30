@@ -1,5 +1,5 @@
 /** @format */
-import { Image, Platform } from "react-native";
+import { Image, Platform, View } from "react-native";
 import React from "react";
 import styled from "styled-components/native";
 import { Text } from "../../typography/text.component";
@@ -16,7 +16,7 @@ const RestaurentWebView = styled(WebView)`
   height: 100px;
 `;
 
-const Item = styled.View`
+const Item = styled(View)`
   padding: 10px;
   max-width: 120px;
   align-items: center;
