@@ -21,6 +21,7 @@ import {
   SectionEnd,
   Icon,
 } from "./restaurentCard.styles";
+import FavouritesIcon from "../../favorites/favourites.component";
 
 const RestaurentCard = ({ restaurent = {} }) => {
   const {
@@ -52,6 +53,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
 
   return (
     <ResCard elevation={5}>
+      <FavouritesIcon restaurent={restaurent} />
       <ResCover
         key={name}
         source={{
