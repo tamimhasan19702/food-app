@@ -29,7 +29,11 @@ export default function CompactRestaurant({ restaurent }) {
   return (
     <Item>
       {restaurent.photos && restaurent.photos[0] && (
-        <Image source={{ uri: restaurent.photos[0] }} />
+        <Image
+          source={{
+            uri: restaurent.photos[0],
+          }}
+        />
       )}
       <Text center variant="caption" numberOfLines={3}>
         {restaurent.name}
