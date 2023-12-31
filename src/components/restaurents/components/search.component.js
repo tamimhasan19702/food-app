@@ -10,7 +10,7 @@ const SearchView = styled(View)`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggle, onFavouritesToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   useEffect(() => {
@@ -20,7 +20,9 @@ export const Search = () => {
     <SearchView>
       <Searchbar
         placeholder="Search for a location"
-        icon={"heart"}
+        icon={isFavouritesToggle ? "heart" : "heart-outline"}
+        iconColor={isFavouritesToggle ? "red" : "black"}
+        onIconPress={onFavouritesToggle}
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword);

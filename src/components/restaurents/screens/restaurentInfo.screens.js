@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, FlatList, Pressable } from "react-native";
 import RestaurentCard from "../components/restaurentCard.component";
 import styled from "styled-components/native";
@@ -21,6 +21,7 @@ const LoadingContainer = styled(View)`
 `;
 
 export const RestaurentInfoScreen = ({ navigation }) => {
+  const [isToggled, setIsToggled] = useState(false);
   const renderItem = ({ item }) => (
     <>
       <Pressable
@@ -48,7 +49,10 @@ export const RestaurentInfoScreen = ({ navigation }) => {
             <Loading size={50} animating="true" color={MD2Colors.red800} />
           </LoadingContainer>
         )}
-        <Search />
+        <Search
+          isFavouritesToggle={isToggled}
+          onFavouritesToggle={() => setIsToggled(!isToggled)}
+        />
         <FlatList
           data={restaurents}
           renderItem={renderItem}
