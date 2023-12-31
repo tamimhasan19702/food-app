@@ -21,7 +21,7 @@ import {
   SectionEnd,
   Icon,
 } from "./restaurentCard.styles";
-import FavouritesIcon from "../../favorites/favourites.component";
+import { FavouritesIcon } from "./favourites.component";
 
 const RestaurentCard = ({ restaurent = {} }) => {
   const {
