@@ -21,7 +21,7 @@ export const Search = ({ isFavouritesToggle, onFavouritesToggle }) => {
       <Searchbar
         placeholder="Search for a location"
         icon={isFavouritesToggle ? "heart" : "heart-outline"}
-        iconColor={isFavouritesToggle ? "red" : "black"}
+        iconColor={isFavouritesToggle ? "black" : "black"}
         onIconPress={onFavouritesToggle}
         value={searchKeyword}
         onSubmitEditing={() => {

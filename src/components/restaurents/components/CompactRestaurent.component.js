@@ -24,7 +24,7 @@ const Item = styled(View)`
 `;
 
 const isAndroid = Platform.OS === "android";
-export default function CompactRestaurant({ restaurent }) {
+export const CompactRestaurant = ({ restaurent }) => {
   const Image = isAndroid ? RestaurentWebView : RestaurentImage;
   return (
     <Item>
@@ -40,4 +40,4 @@ export default function CompactRestaurant({ restaurent }) {
       </Text>
     </Item>
   );
-}
+};
