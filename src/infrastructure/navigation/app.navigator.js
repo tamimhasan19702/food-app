@@ -2,11 +2,12 @@
 
 import { View, Text } from "react-native";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { theme } from "../theme";
 import { RestaurentNavigator } from "./restaurent.navigator";
+import { MapScreen } from "../../components/map/screens/MapView.screen";
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -53,7 +54,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Map"
-        component={SettingsScreen}
+        component={MapScreen}
         options={{
           headerShown: false,
           tabBarLabel: "Map",
@@ -77,9 +78,5 @@ function MyTabs() {
   );
 }
 export const AppNavigator = () => {
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
+  return <MyTabs />;
 };

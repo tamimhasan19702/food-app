@@ -6,10 +6,10 @@ import { LocationRequest, LocationTransform } from "./location.service";
 export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
+  const [keyword, setKeyword] = useState("San Francisco");
+  const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [keyword, setKeyword] = useState("san francisco");
 
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
@@ -21,7 +21,7 @@ export const LocationContextProvider = ({ children }) => {
       return;
     }
 
-    LocationRequest(keyword.toLowerCase())
+    LocationRequest(keyword.trim().toLowerCase())
       .then(LocationTransform)
       .then((result) => {
         setIsLoading(false);

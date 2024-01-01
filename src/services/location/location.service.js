@@ -19,5 +19,5 @@ export const LocationTransform = (result) => {
   const { geometry = {} } = formattedResponse.results[0] || {};
   const { lat, lng } = geometry.location || {};
 
-  return { lat, lng };
+  return { lat, lng, viewPort: geometry.viewport };
 };
