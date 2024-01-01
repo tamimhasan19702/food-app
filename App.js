@@ -8,17 +8,26 @@ import { RestaurantsProvider } from "./src/services/restaurents/restaurents.cont
 import { LocationContextProvider } from "./src/services/location/location.context";
 import Navigation from "./src/infrastructure/navigation";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
+import { firebaseConfig } from "./firebaseConfig";
+import { AuthContaxtProvider } from "./src/services/authentication/authenticationContext";
+import * as firebase from "firebase";
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsProvider>
-              <Navigation />
-            </RestaurantsProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthContaxtProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsProvider>
+                <Navigation />
+              </RestaurantsProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthContaxtProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
