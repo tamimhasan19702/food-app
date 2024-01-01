@@ -10,7 +10,7 @@ import Navigation from "./src/infrastructure/navigation";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { firebaseConfig } from "./firebaseConfig";
 import { AuthContaxtProvider } from "./src/services/authentication/authenticationContext";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

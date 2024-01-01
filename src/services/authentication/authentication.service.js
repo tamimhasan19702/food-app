@@ -1,6 +1,6 @@
 /** @format */
 
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 
 export const loginRequest = async (email, password) => {
   try {

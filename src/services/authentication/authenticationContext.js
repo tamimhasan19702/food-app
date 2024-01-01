@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, createContext } from "react";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 import { loginRequest } from "./authentication.service";
 export const AuthContext = createContext();
 
