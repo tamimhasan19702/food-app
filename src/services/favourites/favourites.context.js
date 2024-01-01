@@ -40,7 +40,7 @@ export const FavouritesContextProvider = ({ children }) => {
 
   useEffect(() => {
     loadFavourites();
-  }, [favourites]);
+  }, []);
 
   useEffect(() => {
     storeFavourites(favourites);

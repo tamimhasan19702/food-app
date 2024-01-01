@@ -1,13 +1,12 @@
 /** @format */
 
-import { Image, View } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import styled from "styled-components/native";
 import { CompactRestaurant } from "./CompactRestaurent.component";
 import { ScrollView, TouchableOpacity } from "react-native";
 import { Spacer } from "../../spacer/spacer";
-import { Text } from "react-native";
-import WebView from "react-native-webview";
+import { Text } from "../../typography/text.component";
 
 const FavouritesView = styled(View)`
   padding: 16px;
@@ -19,9 +18,9 @@ export const FavouritesBar = ({ favourites, onNavigate }) => {
   }
   return (
     <FavouritesView>
-      <View>
+      <Spacer position="left" size="large">
         <Text variant="caption">Favourites</Text>
-      </View>
+      </Spacer>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {favourites.map((restaurent) => {
           const key = restaurent.name;

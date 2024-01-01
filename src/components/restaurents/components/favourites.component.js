@@ -28,12 +28,8 @@ export const FavouritesIcon = ({ restaurent }) => {
       }>
       <AntDesign
         name={isFavourite ? "heart" : "hearto"}
-        size={24}
-        color={
-          isFavourite
-            ? "red"
-            : "white"
-        }
+        size={30}
+        color={isFavourite ? "red" : "white"}
       />
     </FavouriteButton>
   );
