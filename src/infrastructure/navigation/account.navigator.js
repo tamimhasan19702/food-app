@@ -13,7 +13,7 @@ export const AccountNavigator = () => {
     <Stack.Navigator headerMode={"none"}>
       <Stack.Screen name="Account" component={Account} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="register" component={Register} />
+      <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>
   );
 };
