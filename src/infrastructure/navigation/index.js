@@ -9,7 +9,7 @@ export default function Navigation() {
   const { isAuthenticated } = useContext(AuthContext);
   return (
     <NavigationContainer>
-      {isAuthenticated ? <AppNavigator /> : <AccountNavigator />}
+      {isAuthenticated ? <AppNavigator /> : <AccountNavigator/>}
     </NavigationContainer>
   );
 }
