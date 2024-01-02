@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { ImageBackground, View } from "react-native";
 import { Button } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
+import { TextInput } from "react-native-paper";
 
 export const AccountBackground = styled(ImageBackground).attrs({
   source: require("../../../../assets/home_bg.jpg"),
@@ -34,4 +35,8 @@ export const AccountButton = styled(Button).attrs({
     transform: scale(1.5);
     transition: all 0.5s ease;
   }
+`;
+
+export const AccountInput = styled(TextInput)`
+  width: 300px;
 `;
