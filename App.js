@@ -8,14 +8,25 @@ import { RestaurantsProvider } from "./src/services/restaurents/restaurents.cont
 import { LocationContextProvider } from "./src/services/location/location.context";
 import Navigation from "./src/infrastructure/navigation";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-import { firebaseConfig } from "./firebaseConfig";
 import { AuthContaxtProvider } from "./src/services/authentication/authenticationContext";
-import * as firebase from "firebase/app";
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+} from "@expo-google-fonts/oswald";
+import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-if (!firebase.apps) {
-  firebase.initializeApp(firebaseConfig);
-}
 export default function App() {
+  const [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+  });
+
+  const [latoLoaded] = useLato({
+    Lato_400Regular,
+  });
+
+  if (!oswaldLoaded || !latoLoaded) {
+    return null;
+  }
   return (
     <>
       <ThemeProvider theme={theme}>

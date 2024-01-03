@@ -4,7 +4,7 @@
 import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCwarg1ulHV6p6m9Vf-996ycbVomSktgcs",
   authDomain: "food-app-416f9.firebaseapp.com",
   projectId: "food-app-416f9",
@@ -12,3 +12,6 @@ export const firebaseConfig = {
   messagingSenderId: "398907486408",
   appId: "1:398907486408:web:7418d04458d2547bc9f5fd",
 };
+
+// Initialize Firebase
+export const FIREBASEAPP = initializeApp(firebaseConfig);

@@ -8,12 +8,13 @@ import {
   AccountInput,
 } from "../components/account.styles";
 import { Spacer } from "../../spacer/spacer";
+import { Text } from "react-native-paper";
 import { AuthContext } from "../../../services/authentication/authenticationContext";
-import { TextInput } from "react-native-paper";
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthContext);
+  const { onLogin, isError } = useContext(AuthContext);
   return (
     <AccountBackground>
       <AccountContainer>
@@ -39,16 +40,16 @@ export const Login = () => {
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
-        {error && (
+        {isError && (
           <Spacer size="large">
-            <Text variant="error">{error}</Text>
+            <Text>{isError}</Text>
           </Spacer>
         )}
         <Spacer size={"large"}>
           <AccountButton
             icon="lock-open-outline"
             mode="contained"
-            onPress={() => console.warn("Pressed login button")}>
+            onPress={() => onLogin(email, password)}>
             Login
           </AccountButton>
         </Spacer>

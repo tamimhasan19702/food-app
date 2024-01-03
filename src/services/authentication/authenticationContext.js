@@ -1,14 +1,14 @@
 /** @format */
 
 import React, { useState, createContext } from "react";
-import firebase from "firebase/app";
 import { loginRequest } from "./authentication.service";
+
 export const AuthContext = createContext();
 
 export const AuthContaxtProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(null);
+  const [isError, setIsError] = useState([]);
 
   const onLogin = (email, password) => {
     setIsLoading(true);
@@ -18,7 +18,7 @@ export const AuthContaxtProvider = ({ children }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setIsError(err);
+        setIsError(err.toString());
         setIsLoading(false);
       });
   };

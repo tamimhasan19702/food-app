@@ -35,6 +35,7 @@ export const AccountButton = styled(Button).attrs({
     transform: scale(1.5);
     transition: all 0.5s ease;
   }
+  width: 300px;
 `;
 
 export const AccountInput = styled(TextInput)`
