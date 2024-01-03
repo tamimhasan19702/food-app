@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, createContext } from "react";
-import { loginRequest } from "./authentication.service";
+import { loginRequest, registerRequest } from "./authentication.service";
 
 export const AuthContext = createContext();
 
@@ -23,6 +23,23 @@ export const AuthContaxtProvider = ({ children }) => {
       });
   };
 
+  const onRegister = (email, password, repeatPassword) => {
+    if (password !== repeatPassword) {
+      setIsError("Passwords do not match");
+      setIsLoading(false);
+      return;
+    }
+    registerRequest(email, password)
+      .then((u) => {
+        setUser(u);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(err.toString());
+        setIsLoading(false);
+      });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -31,6 +48,7 @@ export const AuthContaxtProvider = ({ children }) => {
         isLoading,
         isError,
         onLogin,
+        onRegister,
       }}>
       {children}
     </AuthContext.Provider>

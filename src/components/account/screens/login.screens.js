@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import {
   AccountBackground,
   AccountContainer,
@@ -16,7 +17,7 @@ import { AuthContext } from "../../../services/authentication/authenticationCont
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isError } = useContext(AuthContext);
+  const { onLogin, isError, isLoading } = useContext(AuthContext);
   return (
     <AccountBackground>
       <Title>Meals To Go</Title>
@@ -49,12 +50,16 @@ export const Login = ({ navigation }) => {
           </ErrorContainer>
         )}
         <Spacer size={"large"}>
-          <AccountButton
-            icon="lock-open-outline"
-            mode="contained"
-            onPress={() => onLogin(email, password)}>
-            Login
-          </AccountButton>
+          {!isLoading ? (
+            <AccountButton
+              icon="lock-open-outline"
+              mode="contained"
+              onPress={() => onLogin(email, password)}>
+              Login
+            </AccountButton>
+          ) : (
+            <ActivityIndicator animating={true} color={MD2Colors.blue300} />
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size={"large"}>
