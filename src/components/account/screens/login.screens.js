@@ -6,17 +6,20 @@ import {
   AccountContainer,
   AccountButton,
   AccountInput,
+  Title,
+  ErrorContainer,
 } from "../components/account.styles";
 import { Spacer } from "../../spacer/spacer";
-import { Text } from "react-native-paper";
+import { Text } from "../../typography/text.component";
 import { AuthContext } from "../../../services/authentication/authenticationContext";
 
-export const Login = () => {
+export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, isError } = useContext(AuthContext);
   return (
     <AccountBackground>
+      <Title>Meals To Go</Title>
       <AccountContainer>
         <Spacer size={"large"}>
           <AccountInput
@@ -41,9 +44,9 @@ export const Login = () => {
           />
         </Spacer>
         {isError && (
-          <Spacer size="large">
-            <Text>{isError}</Text>
-          </Spacer>
+          <ErrorContainer>
+            <Text variant="error">{isError}</Text>
+          </ErrorContainer>
         )}
         <Spacer size={"large"}>
           <AccountButton
@@ -54,6 +57,14 @@ export const Login = () => {
           </AccountButton>
         </Spacer>
       </AccountContainer>
+      <Spacer size={"large"}>
+        <AccountButton
+          icon="arrow-left"
+          mode="contained"
+          onPress={() => navigation.goBack()}>
+          Back
+        </AccountButton>
+      </Spacer>
     </AccountBackground>
   );
 };
