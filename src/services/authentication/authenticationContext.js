@@ -2,7 +2,10 @@
 
 import React, { useState, createContext } from "react";
 import { loginRequest, registerRequest } from "./authentication.service";
+import { FIREBASEAUTH } from "../../../firebaseConfig";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
+const auth = FIREBASEAUTH;
 export const AuthContext = createContext();
 
 export const AuthContaxtProvider = ({ children }) => {
@@ -23,7 +26,18 @@ export const AuthContaxtProvider = ({ children }) => {
       });
   };
 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+      setIsLoading(false);
+    } else {
+      setUser(null);
+      setIsLoading(false);
+    }
+  });
+
   const onRegister = (email, password, repeatPassword) => {
+    setIsLoading(true);
     if (password !== repeatPassword) {
       setIsError("Passwords do not match");
       setIsLoading(false);
@@ -40,6 +54,11 @@ export const AuthContaxtProvider = ({ children }) => {
       });
   };
 
+  const onSignOut = () => {
+    setUser(null);
+    signOut(auth);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -49,6 +68,7 @@ export const AuthContaxtProvider = ({ children }) => {
         isError,
         onLogin,
         onRegister,
+        onSignOut,
       }}>
       {children}
     </AuthContext.Provider>

@@ -58,7 +58,7 @@ export const Login = ({ navigation }) => {
               Login
             </AccountButton>
           ) : (
-            <ActivityIndicator animating={true} color={MD2Colors.blue300} />
+            <ActivityIndicator animating={true} color={MD2Colors.blue800} />
           )}
         </Spacer>
       </AccountContainer>
