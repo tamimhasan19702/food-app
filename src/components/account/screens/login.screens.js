@@ -18,6 +18,7 @@ export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, isError, isLoading } = useContext(AuthContext);
+  console.log(isLoading);
   return (
     <AccountBackground>
       <Title>Meals To Go</Title>
