@@ -10,6 +10,9 @@ import { RestaurentNavigator } from "./restaurent.navigator";
 import { MapScreen } from "../../components/map/screens/MapView.screen";
 import { AccountButton } from "../../components/account/components/account.styles";
 import { AuthContext } from "../../services/authentication/authenticationContext";
+import { LocationContextProvider } from "../../services/location/location.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
+import { RestaurantsProvider } from "../../services/restaurents/restaurents.context";
 function SettingsScreen() {
   const { onSignOut } = useContext(AuthContext);
   return (
@@ -84,5 +87,13 @@ function MyTabs() {
   );
 }
 export const AppNavigator = () => {
-  return <MyTabs />;
+  return (
+    <FavouritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsProvider>
+          <MyTabs />
+        </RestaurantsProvider>
+      </LocationContextProvider>
+    </FavouritesContextProvider>
+  );
 };
