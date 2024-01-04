@@ -1,11 +1,17 @@
 /** @format */
 
-import firebase from "firebase/app";
-
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { FIREBASEAUTH } from "../../../firebaseConfig";
 export const loginRequest = async (email, password) => {
-  try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
-  } catch (error) {
-    console.error(error);
-  }
+  const auth = FIREBASEAUTH;
+
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const registerRequest = async (email, password) => {
+  const auth = FIREBASEAUTH;
+  return await createUserWithEmailAndPassword(auth, email, password);
 };

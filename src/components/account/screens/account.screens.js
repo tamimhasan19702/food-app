@@ -7,12 +7,14 @@ import {
   AccountContainer,
   AccountView,
   AccountButton,
+  Title,
 } from "../components/account.styles";
 import { Spacer } from "../../spacer/spacer";
 export const Account = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountView />
+      <Title>Meals To Go</Title>
       <AccountContainer>
         <AccountButton
           icon="lock-open-outline"

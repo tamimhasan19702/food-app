@@ -1,17 +1,23 @@
 /** @format */
 
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { theme } from "../theme";
 import { RestaurentNavigator } from "./restaurent.navigator";
 import { MapScreen } from "../../components/map/screens/MapView.screen";
+import { AccountButton } from "../../components/account/components/account.styles";
+import { AuthContext } from "../../services/authentication/authenticationContext";
 function SettingsScreen() {
+  const { onSignOut } = useContext(AuthContext);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
+      <AccountButton title="logout" onPress={() => onSignOut()}>
+        Logout
+      </AccountButton>
     </View>
   );
 }
