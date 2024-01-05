@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useContext, useState } from "react";
-import { View, FlatList, Pressable } from "react-native";
+import { View, FlatList, Pressable, Text } from "react-native";
 import RestaurentCard from "../components/restaurentCard.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../spacer/spacer";
@@ -20,6 +20,11 @@ const LoadingContainer = styled(View)`
   position: absolute;
   left: 50%;
   top: 50%;
+`;
+
+const NoFavourite = styled.View`
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RestaurentInfoScreen = ({ navigation }) => {
@@ -58,12 +63,19 @@ export const RestaurentInfoScreen = ({ navigation }) => {
           onFavouritesToggle={() => setIsToggled(!isToggled)}
         />
 
-        {isToggled && (
-          <FavouritesBar
-            favourites={favourites}
-            onNavigate={navigation.navigate}
-          />
-        )}
+        {isToggled &&
+          (favourites.length > 0 ? (
+            <FavouritesBar
+              favourites={favourites}
+              onNavigate={navigation.navigate}
+            />
+          ) : (
+            <NoFavourite>
+              <Spacer position="top" size="large" />
+              <Text>No Favourites added yet!! ☺</Text>
+              <Spacer position="bottom" size="large" />
+            </NoFavourite>
+          ))}
 
         <FlatList
           data={restaurents}

@@ -1,11 +1,16 @@
 /** @format */
 
 import React, { useContext } from "react";
-import { FlatList, Pressable, View } from "react-native";
+import { FlatList, Pressable, View, Text } from "react-native";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import RestaurentCard from "../../restaurents/components/restaurentCard.component";
 import { Spacer } from "../../spacer/spacer";
+import styled from "styled-components/native";
 
+const NoFavourite = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
 export const FavouritesScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
   const renderItem = ({ item }) => (
@@ -27,12 +32,20 @@ export const FavouritesScreen = ({ navigation }) => {
   );
   return (
     <View>
-      <FlatList
-        data={favourites}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => item.key}
-        contentContainerStyle={{ padding: 16 }}
-      />
+      {favourites.length > 0 ? (
+        <FlatList
+          data={favourites}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => item.key}
+          contentContainerStyle={{ padding: 16 }}
+        />
+      ) : (
+        <NoFavourite>
+          <Spacer position="top" size="large" />
+          <Text>No Favourites added yet!! ☺</Text>
+          <Spacer position="bottom" size="large" />
+        </NoFavourite>
+      )}
     </View>
   );
 };
