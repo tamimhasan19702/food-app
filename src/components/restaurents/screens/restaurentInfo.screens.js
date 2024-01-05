@@ -11,6 +11,7 @@ import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { Search } from "../components/search.component";
 import { FavouritesBar } from "../components/favouritesBar.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { FadeInView } from "../../animations/fade.animation";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -32,19 +33,21 @@ export const RestaurentInfoScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
   const renderItem = ({ item }) => (
     <>
-      <Pressable
-        onPress={() =>
-          navigation.navigate("RestaurentDetail", {
-            restaurent: item,
-          })
-        }>
-        <Spacer position="bottom" size="large">
-          <RestaurentCard
-            restaurent={item}
-            style={{ transform: [{ scale: 0.9 }] }}
-          />
-        </Spacer>
-      </Pressable>
+      <FadeInView>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("RestaurentDetail", {
+              restaurent: item,
+            })
+          }>
+          <Spacer position="bottom" size="large">
+            <RestaurentCard
+              restaurent={item}
+              style={{ transform: [{ scale: 0.9 }] }}
+            />
+          </Spacer>
+        </Pressable>
+      </FadeInView>
     </>
   );
 

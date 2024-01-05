@@ -6,6 +6,7 @@ import { FavouritesContext } from "../../../services/favourites/favourites.conte
 import RestaurentCard from "../../restaurents/components/restaurentCard.component";
 import { Spacer } from "../../spacer/spacer";
 import styled from "styled-components/native";
+import { FadeInView } from "../../animations/fade.animation";
 
 const NoFavourite = styled.View`
   align-items: center;
@@ -15,19 +16,21 @@ export const FavouritesScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
   const renderItem = ({ item }) => (
     <>
-      <Pressable
-        onPress={() =>
-          navigation.navigate("RestaurentDetail", {
-            restaurent: item,
-          })
-        }>
-        <Spacer position="bottom" size="large">
-          <RestaurentCard
-            restaurent={item}
-            style={{ transform: [{ scale: 0.9 }] }}
-          />
-        </Spacer>
-      </Pressable>
+      <FadeInView>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("RestaurentDetail", {
+              restaurent: item,
+            })
+          }>
+          <Spacer position="bottom" size="large">
+            <RestaurentCard
+              restaurent={item}
+              style={{ transform: [{ scale: 0.9 }] }}
+            />
+          </Spacer>
+        </Pressable>
+      </FadeInView>
     </>
   );
   return (

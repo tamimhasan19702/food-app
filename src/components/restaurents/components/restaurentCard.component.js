@@ -52,7 +52,7 @@ const RestaurentCard = ({ restaurent = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <ResCard elevation={5}>
+    <ResCard key={placeId} elevation={5}>
       <FavouritesIcon restaurent={restaurent} />
       <ResCover
         key={name}
