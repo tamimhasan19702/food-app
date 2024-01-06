@@ -4,12 +4,11 @@ import { styled } from "styled-components/native";
 import { View, Image, Text } from "react-native";
 import { Card } from "react-native-paper";
 
-export const ResCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
+export const ResCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
-
-export const ResCard = styled(Card)`
+export const ResCover = styled(Card.Cover)`
+  padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
@@ -18,7 +17,6 @@ export const Info = styled(View)`
 `;
 
 export const Rating = styled(View)`
-  display: flex;
   flex-direction: row;
   padding-top: ${(props) => props.theme.space[2]};
   padding-bottom: ${(props) => props.theme.space[2]};
@@ -30,15 +28,14 @@ export const Address = styled(Text)`
 `;
 
 export const Section = styled(View)`
-  display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
 export const SectionEnd = styled(View)`
   flex: 1;
-  justify-content: flex-end;
   flex-direction: row;
+  justify-content: flex-end;
 `;
 
 export const Icon = styled(Image)`

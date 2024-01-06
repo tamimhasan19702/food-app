@@ -8,23 +8,11 @@ import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { theme } from "../theme";
 import { RestaurentNavigator } from "./restaurent.navigator";
 import { MapScreen } from "../../components/map/screens/MapView.screen";
-import { AccountButton } from "../../components/account/components/account.styles";
-import { AuthContext } from "../../services/authentication/authenticationContext";
+
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { RestaurantsProvider } from "../../services/restaurents/restaurents.context";
-function SettingsScreen() {
-  const { onSignOut } = useContext(AuthContext);
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-      <AccountButton title="logout" onPress={() => onSignOut()}>
-        Logout
-      </AccountButton>
-    </View>
-  );
-}
-
+import { SettingsNavigator } from "./settings.navigator";
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -74,7 +62,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={SettingsNavigator}
         options={{
           headerShown: false,
           tabBarLabel: "Settings",
