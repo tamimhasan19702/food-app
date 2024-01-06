@@ -18,7 +18,6 @@ const AvatarContainer = styled(View)`
 `;
 export const SettingScreen = ({ navigation }) => {
   const { onSignOut, user } = useContext(AuthContext);
-  console.log(user);
   return (
     <SafeView>
       <AvatarContainer>
@@ -29,6 +28,12 @@ export const SettingScreen = ({ navigation }) => {
         <Text>{user.email}</Text>
       </AvatarContainer>
       <List.Section>
+        <SettingsItem
+          title="Update Profile"
+          description="Change your profile picture"
+          left={(props) => <List.Icon {...props} color="black" icon="camera" />}
+          onPress={() => navigation.navigate("Camera")}
+        />
         <SettingsItem
           title="Favourites"
           description="View your favourites"
