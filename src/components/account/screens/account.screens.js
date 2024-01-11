@@ -21,10 +21,13 @@ export const Account = ({ navigation }) => {
       <AnimationWrapper>
         <LottieView
           key="animation"
-          resizeMode="cover"
-          source={require("../../../../assets/watermelon.json")}
+          resizeMode="contain"
+          source={{
+            uri: "https://lottie.host/030ac1e8-cb53-4516-96ca-ee5f0b9461b0/hIqie75fea.json",
+          }}
           autoPlay
           loop
+          style={{ width: 400, height: 300 }}
         />
       </AnimationWrapper>
 
@@ -32,7 +35,7 @@ export const Account = ({ navigation }) => {
       <AccountContainer>
         <AccountButton
           icon="lock-open-outline"
-          mode="contained"
+          mode="cover"
           onPress={() => navigation.navigate("Login")}>
           Login
         </AccountButton>
