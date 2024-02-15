@@ -10,6 +10,7 @@ import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
+import { colors } from "../../../infrastructure/theme/colors";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[2]};
@@ -37,7 +38,11 @@ export const SettingScreen = ({ navigation }) => {
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!profilePicture ? (
-            <Avatar.Icon size={180} icon="account" backgroundColor="#D0421B" />
+            <Avatar.Icon
+              size={180}
+              icon="account"
+              backgroundColor={colors.brand.primary}
+            />
           ) : (
             <Avatar.Image
               size={180}

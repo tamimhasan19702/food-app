@@ -35,7 +35,7 @@ export const Account = ({ navigation }) => {
       <AccountContainer>
         <AccountButton
           icon="lock-open-outline"
-          mode="cover"
+          mode="contained"
           onPress={() => navigation.navigate("Login")}>
           Login
         </AccountButton>
