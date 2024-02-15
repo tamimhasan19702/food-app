@@ -17,7 +17,7 @@ import { colors } from "../theme/colors";
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
-  const tabBarIconColor = colors.brand.muted;
+  const tabBarIconColor = "#000";
   const activeTabBarIconColor = colors.brand.primary;
   return (
     <Tab.Navigator
