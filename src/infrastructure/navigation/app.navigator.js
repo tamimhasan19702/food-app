@@ -13,11 +13,12 @@ import { LocationContextProvider } from "../../services/location/location.contex
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { RestaurantsProvider } from "../../services/restaurents/restaurents.context";
 import { SettingsNavigator } from "./settings.navigator";
+import { colors } from "../theme/colors";
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
-  const tabBarIconColor = theme.colors.ui.primary;
-  const activeTabBarIconColor = theme.colors.ui.error;
+  const tabBarIconColor = "#000";
+  const activeTabBarIconColor = colors.brand.primary;
   return (
     <Tab.Navigator
       initialRouteName="Restaurents"
